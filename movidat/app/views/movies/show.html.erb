@@ -1,0 +1,72 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @movie.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @movie.description %>
+</p>
+
+<p>
+  <strong>Cast:</strong>
+  <%= @movie.cast %>
+</p>
+
+<p>
+  <strong>Genre:</strong>
+  <%= @movie.genre %>
+</p>
+
+<p>
+  <strong>Length:</strong>
+  <%= @movie.length %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @movie.url %>
+</p>
+
+<p>
+  <strong>Poster url:</strong>
+  <%= @movie.poster_url %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @movie.year %>
+</p>
+
+<h2>Comments</h2>
+<% @movie.comments.each do |comment| %>
+<p>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= comment.body %>
+</p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@movie, @movie.comments.build]) do |f| %>
+<p>
+  <%= f.label :commenter %><br>
+  <%= f.text_field :commenter %>
+</p>
+<p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+</p>
+<p>
+  <%= f.submit %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>

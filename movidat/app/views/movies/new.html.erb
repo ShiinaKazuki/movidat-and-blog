@@ -1,0 +1,36 @@
+<style type="text/css">
+
+.parallax-background {
+  background: #0078A0 url('Pictures/image.gif') no-repeat center;
+  background-color: #0078A0;
+  height: 900px;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: fixed;
+  width: 100%;
+}
+
+</style>
+
+<h1>New movie</h1>
+
+<%= render 'form' %>
+
+<%= form_for :movie, url: movies_path do |f| %>
+<% if @movie.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@movie.errors.count, "error") %> prohibited
+    this movie from being saved:</h2>
+    <ul>
+      <% @movie.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+<% end %>
+
+<%= link_to 'Back', movies_path %>
